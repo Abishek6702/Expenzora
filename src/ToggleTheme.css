@@ -1,0 +1,182 @@
+:root {
+    --background-color: #e0e8f3;
+    --dark-background-color: #22272e;
+    --switch-background-color: #409fe4;
+    --switch-shadow-color: rgba(0, 0, 0, 0.44);
+    --sun-moon-background: linear-gradient(130deg, #a1b4d1, #fefefd);
+    --sun-moon-shadow-color: rgba(0, 0, 0, 0.44);
+    --sun-moon-bg-color: #fed32f;
+    --sun-moon-sun-bg: linear-gradient(130deg, #f2fa8f, #eb9a25);
+    --sun-moon-moon-bg: linear-gradient(130deg, #fafbfe, #9aa4b1);
+    --sun-moon-moon-bg-image: url("https://firebasestorage.googleapis.com/v0/b/archiprivatechat.appspot.com/o/public%2FMoon%20Crater.png?alt=media&token=c305600c-f793-4491-b427-0a9300df17c8");
+    --clouds: url("https://firebasestorage.googleapis.com/v0/b/archiprivatechat.appspot.com/o/public%2FClouds.png?alt=media&token=86cc7c55-ee79-4ff7-a875-da234fa5619e");
+    --stars-bg-image: url("https://firebasestorage.googleapis.com/v0/b/archiprivatechat.appspot.com/o/public%2FStars.png?alt=media&token=ca411807-b26a-4bfe-ae17-87403ad20eaf");
+  }
+  
+  .theme-toggle {
+    background: none;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    scale: 1.5;
+  }
+  
+  .switch {
+    position: relative;
+    width: 40px;
+    height: 18px;
+    padding: 5px;
+    border-radius: 9999px;
+    background-color: var(--switch-background-color);
+    box-shadow: -1px 5px 4px inset var(--switch-shadow-color);
+    overflow: hidden;
+  }
+  
+  .switch::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    background: var(--sun-moon-background);
+    z-index: -1;
+  }
+  
+  .switch::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    /* background-image: var(--clouds); */
+    background-size: 280%;
+    background-position: center -20px;
+    background-repeat: no-repeat;
+    transition: 1s cubic-bezier(0.65, -0.05, 0.29, 1.2);
+    z-index: -1;
+  }
+  .clouds {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    right: -0%;
+    top: -0%;
+    background-image: var(--clouds);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: right center;
+    z-index: 0;
+    transition: 0.6s ease;
+  }
+  
+  [data-dark-mode="true"] .switch {
+    background-color: #212737;
+  }
+  
+  [data-dark-mode="true"] .switch::after {
+    background-position: 0px 100px;
+  }
+  [data-dark-mode="true"] .clouds {
+    opacity: 0; /* same behavior as original switch */
+    transform: translateY(10px);
+  }
+  
+  .insetcover {
+    position: absolute;
+    inset: 0;
+    padding: inherit;
+    overflow: hidden;
+    border-radius: inherit;
+  }
+  
+  /* Sun + Moon */
+  .sun-moon {
+    font-size: 11px;
+    width: 1em;
+    height: 1em;
+    position: absolute;
+    top: 3.5px;
+    right: calc(100% - 5px - 1em);
+    border-radius: 50%;
+    transition: 0.6s cubic-bezier(0.65, -0.05, 0.29, 1.2);
+    z-index: 5;
+    background-image: var(--sun-moon-sun-bg);
+    background-clip: padding-box;
+    box-shadow: 0 0 0 9px rgba(255, 255, 255, 0.1),
+      0 0 0 0px rgba(255, 255, 255, 0.1), 0 0 0 0px rgba(255, 255, 255, 0.1);
+  }
+  
+  .sun-moon::before {
+    content: "";
+    position: absolute;
+    inset: 1px;
+    border-radius: inherit;
+    background-color: var(--sun-moon-bg-color);
+  }
+  
+  .moon {
+    opacity: 0;
+    background-image: var(--sun-moon-moon-bg);
+  }
+  
+  .moon::before {
+    content: "";
+    position: absolute;
+    inset: 1px;
+    border-radius: inherit;
+    background-color: #d2d9e1;
+    background-image: var(--sun-moon-moon-bg-image);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 60%;
+  }
+  
+  /* Shadow */
+  .sun-moon-shadow {
+    position: absolute;
+    right: calc(100% - 5px - 1em);
+    font-size: 42px;
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    box-shadow: 0 8px 11px var(--sun-moon-shadow-color);
+    transition: 0.6s cubic-bezier(0.65, -0.05, 0.29, 1.2);
+  }
+  
+  .shadow-overlay {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    box-shadow: -1px 5px 4px inset var(--switch-shadow-color);
+  }
+  
+  /* Stars */
+  .stars {
+    position: absolute;
+    width: 45%;
+    height: 80%;
+    bottom: 2px;
+    background-image: var(--stars-bg-image);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    transform: translateY(-125%);
+    transition: 0.6s cubic-bezier(0.65, -0.05, 0.29, 1.2);
+  }
+  
+  /* Dark mode ON → animate everything */
+  [data-dark-mode="true"] .sun-moon,
+  [data-dark-mode="true"] .sun-moon-shadow {
+    right: 5px;
+  }
+  
+  [data-dark-mode="true"] .sun {
+    opacity: 0;
+  }
+  
+  [data-dark-mode="true"] .moon {
+    opacity: 1;
+  }
+  
+  [data-dark-mode="true"] .stars {
+    transform: translateY(0%);
+  }
+  
