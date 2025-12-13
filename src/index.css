@@ -1,3 +1,18 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap");
 @import "tailwindcss";
 
+
 @custom-variant dark (&:where(.dark, .dark *));
+body{
+  font-family: "Roboto", sans-serif;
+}
+.playfair{
+  font-family: "Playfair";
+}
+.gradient {
+  background: linear-gradient(332.9deg, #185a4d 29.38%, #4dd0b1 100%);
+}
+
+
+
