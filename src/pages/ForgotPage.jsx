@@ -59,6 +59,8 @@ const ForgotPage = () => {
 
     if (!res.ok) {
       toast.error(data.message);
+      
+      setLoading(false);
       return;
     }
 
